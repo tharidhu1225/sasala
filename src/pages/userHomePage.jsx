@@ -11,6 +11,7 @@ import EditAdForm from "./User/editAds";
 import LoginForm from "./loging";
 import RegisterForm from "./register";
 import axios from "axios";
+import PopupAd from "./User/popup";
 
 
 export default function HomePage() {
@@ -39,6 +40,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
       <Header />
+      <PopupAd />
 
       <div className="container mx-auto p-4">
         <Routes>
