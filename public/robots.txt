@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://sasala.vercel.app/sitemap.xml
+
+Sitemap: https://sasalsa-lk-backend.onrender.com/sitemap.xml
