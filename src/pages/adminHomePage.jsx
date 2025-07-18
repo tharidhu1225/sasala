@@ -15,12 +15,10 @@ import AdminUsers from "./Admin/adminUsers";
 import AdminAllAds from "./Admin/adminAllAds";
 import AdminAdApprovalPage from "./Admin/adminAprovalAds";
 
-
-
 export default function AdminHomePage() {
   const [user, setUser] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [loading, setLoading] = useState(true); // ✅ loading state
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,7 +35,7 @@ export default function AdminHomePage() {
         },
       })
       .then((res) => {
-        if (res.data.role !== "admin") { // ✅ FIXED: role instead of type
+        if (res.data.role !== "admin") {
           toast.error("Unauthorized access");
           navigate("/");
         } else {
@@ -49,9 +47,15 @@ export default function AdminHomePage() {
         navigate("/login");
       })
       .finally(() => {
-        setLoading(false); // ✅ stop loading
+        setLoading(false);
       });
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    toast.success("Logged out successfully");
+    navigate("/");
+  };
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-white text-black relative">
@@ -62,11 +66,22 @@ export default function AdminHomePage() {
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} 
           h-full md:min-h-screen`}
       >
-        <div className="flex justify-between items-center px-4 py-3 md:hidden">
+        <div className="flex justify-between items-center px-4 py-3">
           <h2 className="text-lg font-semibold">Admin Menu</h2>
-          <button onClick={() => setSidebarOpen(false)} className="text-white">
-            <BsX size={24} />
-          </button>
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={handleLogout}
+              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-sm"
+            >
+              Logout
+            </button>
+            <button
+              onClick={() => setSidebarOpen(false)}
+              className="text-white md:hidden"
+            >
+              <BsX size={24} />
+            </button>
+          </div>
         </div>
 
         <div className="flex flex-col items-start space-y-6 px-6 mt-6 md:mt-12">
@@ -77,7 +92,7 @@ export default function AdminHomePage() {
           >
             <BsGraphUp /> Dashboard
           </Link>
-          
+
           <Link
             to="/admin/customers"
             onClick={() => setSidebarOpen(false)}
@@ -85,6 +100,7 @@ export default function AdminHomePage() {
           >
             <BsPeopleFill /> Customers
           </Link>
+
           <Link
             to="/admin/all-ads"
             onClick={() => setSidebarOpen(false)}
@@ -92,6 +108,7 @@ export default function AdminHomePage() {
           >
             <BiSolidSpreadsheet /> All ADS
           </Link>
+
           <Link
             to="/admin/aprove-ads"
             onClick={() => setSidebarOpen(false)}
@@ -99,7 +116,6 @@ export default function AdminHomePage() {
           >
             <MdOutlinePendingActions /> Pending ADS
           </Link>
-          
         </div>
       </div>
 
@@ -125,7 +141,7 @@ export default function AdminHomePage() {
             <Route path="/customers" element={<AdminUsers />} />
             <Route path="/all-ads" element={<AdminAllAds />} />
             <Route path="/:id" element={<h1>Comming soon</h1>} />
-            <Route path="/aprove-ads" element={<AdminAdApprovalPage/>} />
+            <Route path="/aprove-ads" element={<AdminAdApprovalPage />} />
           </Routes>
         )}
       </div>
