@@ -12,6 +12,9 @@ import LoginForm from "./loging";
 import RegisterForm from "./register";
 import axios from "axios";
 import PopupAd from "./User/popup";
+import Footer from "../components/footer";
+import ContactUs from "./User/ContactUs";
+import AboutUs from "./User/AboutUs";
 
 
 export default function HomePage() {
@@ -52,8 +55,11 @@ export default function HomePage() {
           <Route path="/edit-ad/:id" element={<EditAdForm />} />
           <Route path="/login" element={<LoginForm/>}/>
           <Route path="/register" element={<RegisterForm/>}/>
+          <Route path="/contact" element={<ContactUs/>}/>
+          <Route path="/about" element={<AboutUs/>}/>
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 }

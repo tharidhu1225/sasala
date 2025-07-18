@@ -2,7 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { FiMail, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
+import { FiLock, FiEye, FiEyeOff } from "react-icons/fi";
+import { FaIdCard } from "react-icons/fa";
 
 export default function LoginForm() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -58,7 +59,7 @@ export default function LoginForm() {
 
         {/* Email Input */}
         <div className="mb-5 relative">
-          <FiMail
+          <FaIdCard
             className="absolute left-4 top-3.5 text-green-500"
             size={20}
             aria-hidden="true"
@@ -66,7 +67,7 @@ export default function LoginForm() {
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="NIC Number"
             value={formData.email}
             onChange={handleChange}
             required
