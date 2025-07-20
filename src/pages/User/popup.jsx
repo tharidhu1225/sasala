@@ -14,7 +14,7 @@ const PopupAd = () => {
 
   const handleClose = () => {
     setClosing(true)
-    setTimeout(() => setVisible(false), 300) // wait for fade-out animation
+    setTimeout(() => setVisible(false), 300)
   }
 
   const handleDownload = () => {
@@ -44,11 +44,11 @@ const PopupAd = () => {
         style={{
           backgroundColor: '#ffffff',
           padding: '30px 20px',
-          borderRadius: '16px',
+          borderRadius: '20px',
           width: '90%',
           maxWidth: '420px',
           textAlign: 'center',
-          boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+          boxShadow: '0 15px 30px rgba(0,0,0,0.25)',
           position: 'relative',
           transform: closing ? 'scale(0.95)' : 'scale(1)',
           transition: 'transform 0.3s ease',
@@ -63,37 +63,49 @@ const PopupAd = () => {
             fontSize: '24px',
             background: 'none',
             border: 'none',
-            color: '#999',
+            color: '#aaa',
             cursor: 'pointer',
           }}
         >
           ×
         </button>
-        <h2 style={{ fontSize: '22px', marginBottom: '10px' }}>📲 Get Our Mobile App</h2>
-        <p style={{ fontSize: '16px', color: '#555' }}>
-          Enjoy faster access and smoother experience with our mobile app.
+
+        <h2 style={{ fontSize: '24px', marginBottom: '10px', color: '#1e40af' }}>
+          📲 අපේ Mobile App එක Download කරන්න
+        </h2>
+
+        <p style={{ fontSize: '16px', color: '#444', marginBottom: '15px' }}>
+          දැන් ඔබට අපේ සේවාවන්ට වඩාත් වේගවත් සහ පහසු ලෙස පිවිසිය හැක!
         </p>
+
+        <ul style={{ textAlign: 'left', padding: '0 20px', marginBottom: '20px', color: '#333', fontSize: '15px' }}>
+          <li>🚀 ඉතා වේගවත් Performance</li>
+          <li>📱 Mobile friendly UI</li>
+          <li>🔔 Notify වෙන instant updates</li>
+          <li>🛒 පහසු සාප්පු කරන ක්‍රමවේද</li>
+        </ul>
+
         <a
-          href="/universal.apk"
+          href="/Sasala.lk.apk"
           download
           onClick={handleDownload}
           style={{
             display: 'inline-block',
-            marginTop: '20px',
+            marginTop: '10px',
             padding: '12px 30px',
             backgroundColor: '#2563eb',
             color: '#fff',
             textDecoration: 'none',
-            borderRadius: '8px',
+            borderRadius: '10px',
             fontSize: '16px',
             fontWeight: '600',
-            boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
             transition: 'background-color 0.3s ease',
           }}
           onMouseEnter={e => e.target.style.backgroundColor = '#1e40af'}
           onMouseLeave={e => e.target.style.backgroundColor = '#2563eb'}
         >
-          Download APK
+          📥 APK එක Download කරන්න
         </a>
       </div>
     </div>
